@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html lang="zh_TW">
+    <head>
+        <title>家聚請課啦.....</title>
+        <meta charset="utf-8" />
+        <meta name="description" content="算家聚請客要出多少" />
+        <!-- jQuery  -->
+        <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" type="text/css"  href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+        <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <!--錢-->
+        <div class="col-md-10 col-md-offset-1 bg-base container" >
+            <h1 class="text-center">幹 好貴喔</h1>
+            <form class="form form-inline col-md-4">
+                <div class="form-group  row form-group">
+                    <label>一個人要出多少：</label>
+                    <input type="text" class="form-control" id="dollar" placeholder="..." value=0>
+                  </div>
+              </form>
+              <!--人-->
+              <form class="form form-inline col-md-12">
+                <div class="form-group col-md-4 form-group">
+                    <div class="input-group">
+                      <div class="input-group-addon">被請：</div>
+                      <input type="text" class="form-control" id="allFreshman" placeholder="被請" value=0>
+                      <div class="input-group-addon">人</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4 form-group">
+                    <div class="input-group">
+                          <div class="input-group-addon">請客：</div>
+                          <input type="text" class="form-control" id="allSenior" placeholder="請客" value=0>
+                          <div class="input-group-addon">人</div>
+                    </div>
+                  </div>
+              </form>
+              <!--應付金額-->
+              <form class="form form-inline col-md-12">
+                <div class="form-group col-md-3 form-group">
+                    <div class="input-group">
+                          <div class="input-group-addon">有來</div>
+                          <input type="text" class="form-control " id="attendPay" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3 form-group">
+                    <div class="input-group">
+                          <div class="input-group-addon">沒來</div>
+                          <input type="text" class="form-control " id="absentPay" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3 form-group">
+                    <div class="input-group">
+                          <div class="input-group-addon add">幫1個沒來的出</div>
+                          <input type="text" class="form-control add " id="add1" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3 form-group">
+                    <div class="input-group">
+                          <div class="input-group-addon add">幫2個沒來的出</div>
+                          <input type="text" class="form-control add " id="add2" readonly>
+                    </div>
+                  </div>
+              </form>
+              <!--差運算(總有四捨五入的問題)-->
+              <form class="form form-inline col-md-12">
+                <div class="form-group col-md-4 form-group">
+                    <div class="input-group">
+                          <div class="input-group-addon">總價：</div>
+                          <input type="text" class="form-control " id="total" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4 form-group">
+                    <div class="input-group">
+                          <div class="input-group-addon">已付：</div>
+                          <input type="text" class="form-control " id="pay" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4 form-group">
+                    <div class="input-group">
+                          <div class="input-group-addon">多：</div>
+                          <input type="text" class="form-control " id="less"  readonly>
+                    </div>
+                  </div>
+              </form>
+        </div>
+        <div class="col-md-10 col-md-offset-1 row footer" >
+            <p class="text-center">
+                    Copyright © 2015 謝瑜軒. All rights reserved
+            </p>
+        </div>
+    </body>
+    <!--*****************************************************
+    * 別一直吵說為何js跟css不分開寫                            *
+    *    1.我一開始沒打算放在伺服器上，我只要移到手機而已    *
+    *    2.移到手機只有一個檔案方便多了                        *
+    * 到時候誰想移自己移                                    *
+    ******************************************************-->
+    <!--javascript-->
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            $(":input").blur(function(){
+                allFreshman = count($("#allFreshman").val());
+                allSenior = count($("#allSenior").val());
+                dollar = count($("#dollar").val());
+                absentPay = (allFreshman * dollar) / allSenior;
+                attendPay = absentPay + dollar;
+                add1 = attendPay + absentPay;
+                add2 = add1 + absentPay;
+                total = dollar*(allFreshman+allSenior);
+                pay = attendPay*allSenior;
+                less =total-pay;
+                if(allFreshman && allSenior && dollar){
+                    $("#attendPay").val(Math.floor(attendPay));
+                    $("#absentPay").val(Math.floor(absentPay));
+                    $("#add1").val(Math.floor(add1));
+                    $("#add2").val(Math.floor(add2));
+                    $("#total").val(total);
+                    $("#pay").val(pay);
+                    $("#less").val(less);
+                }
+            });
+        });
+        function count(number)
+        {
+            if (number ==="") 
+                return 0;
+            var active = /([0-9]+)(?:(\+|-)([0-9]+))?/;
+            if(!active.test(number)){ //regexp跟null判斷
+                alert("輸入錯誤");
+                return 0;
+            }
+            else{
+                var match = active.exec(number);
+                var sum = match[1];
+                if(match[2]==""+"")
+                    return parseInt(sum)+parseInt(match[3]);
+                else
+                    return parseInt(sum)
+            }
+        }
+    </script>
+
+    <!-- css -->
+    <style type="text/css">
+        form
+        {
+            margin-top: 1%;
+            margin-bottom: 1%;
+        }
+        div.bg-base
+        {
+            margin-top: 1%;
+            background-color:#d9fffe;
+        }
+        div.footer
+        {
+            background-color:#6f3922;
+            color:#ffffff;
+            margin-bottom: 1%;
+        }
+    </style>
+</html>
+
