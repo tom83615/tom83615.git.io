@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html lang="zh_TW">
+    <head>
+        <title>微生物要吃多少</title>
+        <meta charset="utf-8" />
+        <meta name="description" content="RBC的生物要吃多少" />
+        <!-- jQuery  -->
+        <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" type="text/css"  href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+        <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="col-xs-10 col-xs-offset-1 container">
+            <div>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label>進流量</label>
+                        <div class="input-group col-xs-10">
+                            <input type="Q" class="form-control q" id="Q" placeholder="Q">
+                            <div class="input-group-addon">L</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>BOD</label>
+                        <div class="input-group col-xs-10">
+                            <input type="BOD" class="form-control bod" id="BOD" placeholder="BOD">
+                            <div class="input-group-addon">mg/L</div>
+                        </div>
+                    </div>
+                </form>
+                <button class="btn form-group btn-default col-xs-10 cla">計算</button>
+            </div>
+            <div class ='row col-xs-12'>
+                <hr/>
+                <form>
+                    <div class="form-group">
+                        <label>C<sub>12</sub>H<sub>22</sub>O<sub>11</sub></label>
+                        <div class="input-group col-xs-10">
+                            <input class="form-control c12h22o11" disabled>
+                            <div class="input-group-addon">g</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>(NH)<sub>4</sub>Cl</label>
+                        <div class="input-group col-xs-10">
+                            <input class="form-control nh4cl" disabled>
+                            <div class="input-group-addon">g</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>KH<sub>2</sub>(PO)<sub>4</sub></label>
+                        <div class="input-group col-xs-10">
+                            <input class="form-control kh2po4" disabled>
+                            <div class="input-group-addon">g</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>K<sub>2</sub>H(PO)<sub>4</sub></label>
+                        <div class="input-group col-xs-10">
+                            <input class="form-control k2hpo4" disabled>
+                            <div class="input-group-addon">g</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+    <!--javascript-->
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            $(".cla").click(function(){
+                var active = /[0-9.]/;
+                    var q = $('input.q').val();
+                    var bod = $('input.bod').val();
+                    if(!active.test(q) && !active.test(bod)){ //regexp跟null判斷
+                        alert("輸入錯誤");}
+                    else{
+                        var c = bod*q/32;
+                        var n = c/100*10;
+                        var p = c/100*1;
+                        var c12h22o11 = Math.round(c/12*342/1000 *10000)/10000;
+                        var nh4cl = Math.round(n/14*53.5/1000 *10000)/10000;
+                        var kh2po4 = Math.round(p*(2/3)/31*136.1/1000 *10000)/10000;
+                        var k2hpo4 = Math.round(p*(1/3)/31*174.2/1000 *10000)/10000;
+                        $("input.c12h22o11").val(c12h22o11);
+                        $("input.nh4cl").val(nh4cl);
+                        $("input.kh2po4").val(kh2po4);
+                        $("input.k2hpo4").val(k2hpo4);
+                    }
+            });
+        });
+    </script>
+
+    <!-- css -->
+    <style type="text/css">
+        body
+        {
+            background-color: #212121;
+            color: #FFFFFF;
+        }
+        label
+        {
+            color: #FFECB3;
+        }
+        hr
+        {
+            color: #FFFFFF;
+            size: 5px;
+        }
+
+    </style>
+</html>
