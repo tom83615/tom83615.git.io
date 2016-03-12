@@ -23,19 +23,18 @@ $(document).ready(function(){
 });
 function count(number)
 {
-    if (number ==="") 
+    val = numtest(number);
+    if (val == false) 
         return 0;
-    var active = /([0-9]+)(?:(\+|-)([0-9]+))?/;
-    if(!active.test(number)){ //regexp跟null判斷
+    else
+        return val;
+}
+function numtest(number)
+{
+    var active = /[0-9+-/*///)]?/;
+    if(!active.test(number) || number ===""){ //regexp跟null判斷
         alert("輸入錯誤");
-        return 0;
-    }
-    else{
-        var match = active.exec(number);
-        var sum = match[1];
-        if(match[2]==""+"")
-            return parseInt(sum)+parseInt(match[3]);
-        else
-            return parseInt(sum)
-    }
+        return false;}
+    else
+        return eval(number);
 }

@@ -15,4 +15,8 @@
         color:#ffffff;
         margin-bottom: 1%;
     }
+    .readonly
+    {
+        background-color:#ffffff !important;
+    }
 </style>
