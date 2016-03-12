@@ -33,7 +33,7 @@ function numtest(number)
 {
     var active = /[0-9+-/*///)]?/;
     if(!active.test(number) || number ===""){ //regexp跟null判斷
-        alert("輸入錯誤");
+        //alert("輸入錯誤");
         return false;}
     else
         return eval(number);
