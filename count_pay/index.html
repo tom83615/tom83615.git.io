@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css"  href="count_pay.css" />
     </head>
     <body>
-        <div class="col-xs-12 col-sm-10 col-md-offset-1 col-md-8 col-md-offset-2 bg-base text-center container-fluid" >
+        <div class="col-xs-12 bg-base text-center container-fluid" >
             <h1>幹 好貴喔</h1>
 
             <form class="form form-inline">
@@ -30,14 +30,14 @@
 
                 <!--人-->
                 <div class="row">
-                    <div class="form-group col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group col-xs-12">
                         <div class="input-group">
                             <div class="input-group-addon">被請</div>
                             <input type="number" class="form-control" id="allFreshman" placeholder="被請" value=0>
                             <div class="input-group-addon">人</div>
                         </div>
                     </div>
-                    <div class="form-group col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group col-xs-12">
                         <div class="input-group">
                             <div class="input-group-addon">請客</div>
                             <input type="number" class="form-control" id="allSenior" placeholder="請客" value=0>
@@ -47,25 +47,25 @@
                 </div>
                 <!--應付金額-->
                 <div class="row">
-                    <div class="form-group col-xs-6 col-sm-6 col-md-3">
+                    <div class="form-group col-xs-12">
                         <div class="input-group">
                             <div class="input-group-addon">請客有來出</div>
                             <input type="text" class="readonly form-control " id="attendPay" readonly>
                         </div>
                     </div>
-                    <div class="form-group col-xs-6 col-sm-6 col-md-3">
+                    <div class="form-group col-xs-12">
                         <div class="input-group">
                             <div class="input-group-addon">請客沒來出</div>
                             <input type="text" class="readonly form-control " id="absentPay" readonly>
                         </div>
                     </div>
-                    <div class="form-group col-xs-6 col-sm-6 col-md-3">
+                    <div class="form-group col-xs-12">
                         <div class="input-group">
                             <div class="input-group-addon add">幫1個沒來的出</div>
                             <input type="text" class="readonly form-control add " id="add1" readonly>
                         </div>
                     </div>
-                    <div class="form-group col-xs-6 col-sm-6 col-md-3">
+                    <div class="form-group col-xs-12">
                         <div class="input-group">
                             <div class="input-group-addon add">幫2個沒來的出</div>
                             <input type="text" class="readonly form-control add " id="add2" readonly>
@@ -75,19 +75,19 @@
 
                 <!--差運算(總有四捨五入的問題)-->
                 <div class="row">
-                    <div class="form-group col-xs-12 col-sm-4 col-md-4 form-group">
+                    <div class="form-group col-xs-12 form-group">
                         <div class="input-group">
                             <div class="input-group-addon">總價：</div>
                             <input type="text" class="readonly form-control " id="total" readonly>
                         </div>
                     </div>
-                    <div class="form-group col-xs-12 col-sm-4 col-md-4 form-group">
+                    <div class="form-group col-xs-12 form-group">
                         <div class="input-group">
                             <div class="input-group-addon">已付：</div>
                             <input type="text" class="readonly form-control " id="pay" readonly>
                         </div>
                     </div>
-                    <div class="form-group col-xs-12 col-sm-4 col-md-4 form-group">
+                    <div class="form-group col-xs-12 form-group">
                         <div class="input-group">
                             <div class="input-group-addon">多：</div>
                             <input type="text" class="readonly form-control " id="less"  readonly>
@@ -96,7 +96,7 @@
                 </div>
             </form>
         </div>
-        <div class="col-xs-12 col-sm-10 col-md-offset-1 col-md-8 col-md-offset-2 footer container  text-center" >
+        <div class="col-xs-12 footer container  text-center" >
             <p class="text-center">
                     Copyright © 2015 謝瑜軒. All rights reserved
             </p>
