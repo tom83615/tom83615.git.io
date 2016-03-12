@@ -2,19 +2,19 @@ $(document).ready(function(){
     $(":input").blur(function(){
         allFreshman = count($("#allFreshman").val());
         allSenior = count($("#allSenior").val());
-        dollar = count($("#dollar").val());
-        absentPay = (allFreshman * dollar) / allSenior;
-        attendPay = absentPay + dollar;
+        dollar = Math.floor( count($("#dollar").val()) );
+        absentPay = Math.floor( (allFreshman * dollar) / allSenior );
+        attendPay = Math.floor( absentPay + dollar);
         add1 = attendPay + absentPay;
         add2 = add1 + absentPay;
         total = dollar*(allFreshman+allSenior);
         pay = attendPay*allSenior;
         less =total-pay;
         if(allFreshman && allSenior && dollar){
-            $("#attendPay").val(Math.floor(attendPay));
-            $("#absentPay").val(Math.floor(absentPay));
-            $("#add1").val(Math.floor(add1));
-            $("#add2").val(Math.floor(add2));
+            $("#attendPay").val(attendPay);
+            $("#absentPay").val(absentPay);
+            $("#add1").val(add1);
+            $("#add2").val(add2);
             $("#total").val(total);
             $("#pay").val(pay);
             $("#less").val(less);
