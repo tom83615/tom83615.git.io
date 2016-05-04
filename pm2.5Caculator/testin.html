@@ -1,0 +1,26 @@
+<html>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <from>
+        NO: <input type="text" id="numberInput"><br/>
+        Name: <input type="text" id="nameInput"><br/>
+        Score: <input type="text" id="scoreInput"><br/>
+        <input type="button" value="送出" onclick="SendScore()">
+    </from>
+    <script type="text/javascript">
+        function SendScore(){
+            $.get("https://script.google.com/macros/s/AKfycbwytNC82kSKBgbXsQ3_gbgfX18Za6ag1kOY8dMU24K76gAqjFy1/exec", {
+                        "number": document.getElementById("numberInput").value,
+                        "name": document.getElementById("nameInput").value,
+                        "score": document.getElementById("scoreInput").value
+                    },
+                    function (data) {
+                        document.write("--------------------------");
+                        document.write("Result = "+data);
+                        document.write("--------------------------");
+                    });
+        }
+    </script>
+</body>
+</html>
