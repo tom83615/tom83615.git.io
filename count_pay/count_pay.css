@@ -1,22 +1,24 @@
-<style type="text/css">
-    form
-    {
-        margin-top: 1%;
-        margin-bottom: 1%;
-    }
-    div.bg-base
-    {
-        margin-top: 1%;
-        background-color:#d9fffe;
-    }
-    div.footer
-    {
-        background-color:#6f3922;
-        color:#ffffff;
-        margin-bottom: 1%;
-    }
-    .readonly
-    {
-        background-color:#ffffff !important;
-    }
-</style>
+form
+{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+form .input-group
+{
+     margin-bottom: 1rem !important;
+}
+div.bg-base
+{
+    margin-top: 1%;
+    background-color:#d9fffe;
+}
+div.footer
+{
+    background-color:#6f3922;
+    color:#ffffff;
+    margin-bottom: 1%;
+}
+.readonly
+{
+    background-color:#ffffff !important;
+}
